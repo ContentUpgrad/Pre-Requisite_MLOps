@@ -1,0 +1,63 @@
+# Build Image
+docker build -t fastapideploy .
+
+# Run Container
+docker run -d --name dockercontainer -p 80:8000 fastapideploy
+
+# PS
+docker ps    --- Show running containers
+docker ps -a --- Show all containers
+
+# Show Images
+docker images
+
+# Remove
+docker rm dockercontainer -- remove container
+docker rmi fastapideploy -- remove image
+
+# Docker Hub
+-- Create Repository from Hub
+
+# Create Tag/Re-Tag Image
+docker tag fastapideploy adib0073/fastapi_ml_deploy:fastapideploy
+
+# Commit Container
+docker commit dockercontainer adib0073/fastapi_ml_deploy:fastapideploy
+
+# Push Container
+docker push adib0073/fastapi_ml_deploy:fastapideploy
+
+# Pull Docker Images
+docker pull adib0073/fastapi_ml_deploy:fastapideploy
+
+============================================
+# Build a Docker image
+$ docker build -t [image_name]:[tag] .
+
+# Run a Docker container specifying a name
+$ docker run --name [container_name] [image_name]:[tag]
+     $ docker run -p [host:host] [image_name]
+
+# Fetch the logs of a container
+$ docker logs -f [container_id_or_name]
+
+# Run a command in a running container
+$ docker exec -it [container_id_or_name] bash
+
+# Show running containers
+$ docker ps
+
+# Show all containers
+$ docker ps -a
+
+# Show Docker images
+$ docker images
+
+# Stop a Docker container
+$ docker stop [container_id_or_name]
+
+# Remove a Docker container
+$ docker rm [container_id_or_name]
+
+# Remove a Docker image
+$ docker rmi [image_id_or_name]

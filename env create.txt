@@ -1,0 +1,31 @@
+python -m venv deployment/ # create environment
+deployment\Scripts\activate.bat   # activate environment
+deactivate		   # deactivate environment
+pip freeze > requirements.txt  # Requirement.txt
+cat requirements.txt           # Requirement.txt
+
+
+# Post Call Body
+{
+  "age": 66,
+  "sex": 1,
+  "chest_pain_type": 0,
+  "resting_bp": 120,
+  "cholestoral": 302,
+  "fasting_blood_sugar": 0,
+  "restecg": 0,
+  "max_hr": 151,
+  "exang": 0,
+  "oldpeak": 0.4,
+  "slope": 1,
+  "num_major_vessels": 0,
+  "thal": 2
+}
+
+=============
+Environment Variable
+DOCKER_HOST
+tcp://192.168.99.100:2376
+tcp://localhost:2375
+DOCKER_TLS_VERIFY
+1

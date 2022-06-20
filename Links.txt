@@ -1,0 +1,4 @@
+https://towardsdatascience.com/how-you-can-quickly-deploy-your-ml-models-with-fastapi-9428085a87bf
+https://towardsdatascience.com/how-to-deploy-a-machine-learning-model-with-fastapi-docker-and-github-actions-13374cbd638a
+https://hub.docker.com/_/hello-world
+https://docs.docker.com/desktop/
