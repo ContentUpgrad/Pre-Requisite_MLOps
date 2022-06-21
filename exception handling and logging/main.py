@@ -14,6 +14,7 @@ from sklearn import preprocessing
 import joblib
 from sklearn.metrics import accuracy_score
 import argparse
+import logging
 
 
 # ### Get Inference Data
@@ -115,28 +116,46 @@ def apply_pre_processing(data):
 
 
 # main function - starting point of the code
-def main(model_name):
+def main(model_name, logger):
     '''
     main function - starting point of the code
     '''
     try:
         print("Starting execution of the inference code...")
+        logger.info("Started execution. Fetching data now ...")
         inference_data, labels = get_inference_data()
+        logger.info("Data fetched. Applying pre-processing now ...")
         processed_inference_data = apply_pre_processing(inference_data)
         # ### Load Saved Model
+        logger.info("Pre-processing is completed. Loading trained model now ...")
         model = joblib.load(model_name)
+        logger.info("Trained model is loaded. Executing trained model on inference data ...")
         # ### Prediction on inference data
         model.predict(processed_inference_data)
         # ### Scoring check on prediction
         print("Checking inference accuracy:")
         print(accuracy_score(labels[-20:], model.predict(processed_inference_data)))
+        logger.info("Execution is complete.")
     except Exception as e:
         print("--------Error!!!--------")
+        logger.error("Encountered error. Please check.")
+        logger.error(e)
         print(e)
 
 
 
 if __name__ == "__main__":
+    # Create and configure logger
+    logging.basicConfig(filename="inference_pipe_exec.log",
+                    format='%(asctime)s %(message)s',
+                    filemode='a')
+
+    # Creating an object
+    logger = logging.getLogger()
+
+    # Setting the threshold of logger to DEBUG
+    logger.setLevel(logging.DEBUG)
+
     parser = argparse.ArgumentParser(description='Running inference pipeline')
     parser.add_argument('--model',
                         default='adaboost',
@@ -146,4 +165,4 @@ if __name__ == "__main__":
         model_name = 'aditya_model2_svm.joblib'
     else:
         model_name = 'aditya_model1_adaboost.joblib'
-    main(model_name)
+    main(model_name, logger)
