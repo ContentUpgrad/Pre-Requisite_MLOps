@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
+# %%
 
 # ## Heart Disease Classification
 # 
@@ -7,7 +8,7 @@
 
 # ### Import Modules
 
-# In[20]:
+# %%
 
 
 import pandas as pd
@@ -18,7 +19,7 @@ import joblib
 
 # ### Get Inference Data
 
-# In[79]:
+# %%
 
 
 # in real-time use cases, this method should be replaced with live flowing data
@@ -33,13 +34,13 @@ def get_inference_data():
 inference_data, labels = get_inference_data()
 
 
-# In[84]:
+# %%
 
 
 inference_data.columns
 
 
-# In[85]:
+# %%
 
 
 inference_data.head()
@@ -47,7 +48,7 @@ inference_data.head()
 
 # ### Apply Same Pre-processing
 
-# In[80]:
+# %%
 
 
 # apply same pre-processing and feature engineering techniques as applied during the training process
@@ -104,7 +105,7 @@ processed_inference_data
 
 # ### Load Saved Model
 
-# In[81]:
+# %%
 
 
 model = joblib.load('aditya_model1_adaboost.joblib')
@@ -113,7 +114,7 @@ model
 
 # ### Prediction on inference data
 
-# In[82]:
+# %%
 
 
 model.predict(processed_inference_data)
@@ -121,14 +122,14 @@ model.predict(processed_inference_data)
 
 # ### Scoring check on prediction
 
-# In[83]:
+# %%
 
 
 from sklearn.metrics import accuracy_score
 accuracy_score(labels[-20:], model.predict(processed_inference_data))
 
 
-# In[ ]:
+# %%
 
 
 
