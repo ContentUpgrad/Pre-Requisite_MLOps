@@ -4,14 +4,16 @@ from sklearn import preprocessing
 from constants import *
 
 
+def get_inference_data():
+    data = pd.read_csv("Data/inference_heart_disease.csv") # Live connection to the database
+    data.drop_duplicates(subset=None, inplace=True)
+    data.duplicated().any()
+    
+    return data[data.columns.drop('target')], data['target']
+
+
 # apply same pre-processing and feature engineering techniques as applied during the training process
 def encode_features(df, features):
-    '''
-    Method for one-hot encoding all selected categorical fields
-    Input: The method takes pandas dataframe and list of the feature names as input
-    Output: Returns a dataframe with one-hot encoded features
-    Example usage: one_hot_encoded_features = encode_features(dataframe, list_features_to_encode)
-    '''
     # Implement these steps to prevent dimension mismatch during inference
     encoded_df = pd.DataFrame(columns= ONE_HOT_ENCODED_FEATURES) # from constants.py
     placeholder_df = pd.DataFrame()
@@ -47,6 +49,7 @@ def normalize_data(df):
 
 def apply_pre_processing(data):
     features_to_encode = FEATURES_TO_ENCODE # from constants.py
-    encoded = encode_features(data, features_to_encode)
-    processed_data = normalize_data(encoded)
+    encoded = encode_features(data, features_to_encode) # applying encoded features function
+    processed_data = normalize_data(encoded) # applying normalization function
+    
     return processed_data
