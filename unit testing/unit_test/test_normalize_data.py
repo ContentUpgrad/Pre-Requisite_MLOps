@@ -14,3 +14,4 @@ class TestDataNormalization:
         inference_data, labels = get_inference_data()
         norm_df = normalize_data(inference_data)
         assert int(norm_df.max().max()) <= 1,"Max value after normalization should be 1"
+        assert int(norm_df.min().min()) >= 0,"Min value after normalization should be 0"
