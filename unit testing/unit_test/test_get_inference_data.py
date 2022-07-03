@@ -1,4 +1,6 @@
-from main import *
+import warnings
+warnings.filterwarnings("ignore")
+from utils import *
 import pandas as pd
 
 

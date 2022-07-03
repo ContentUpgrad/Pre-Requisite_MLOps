@@ -15,7 +15,7 @@ class InputDataModel(BaseModel):
 	slope: int
 	num_major_vessels: int
 	thal: int
-	
+
 class OutputDataModel(BaseModel):
     predicted_value: bool
     predicted_class: str
