@@ -10,17 +10,17 @@ from constants import *
 
 
 def get_inference_data():
-        '''
-        Method for loading inference data
-        Input: No input
-        Output: Returns inference data features and labels
-        Example usage: inference_data, labels = get_inference_data()
-        '''
-        data = pd.read_csv("Data/inference_heart_disease.csv") # Live connection to the database
-        data.drop_duplicates(subset=None, inplace=True)
-        data.duplicated().any()
-        
-        return data[data.columns.drop('target')], data['target']
+    '''
+    Method for loading inference data
+    Input: No input
+    Output: Returns inference data features and labels
+    Example usage: inference_data, labels = get_inference_data()
+    '''
+    # Live connection to the database
+    data = pd.read_csv("Data/inference_heart_disease.csv")
+    data.drop_duplicates(subset=None, inplace=True)
+    data.duplicated().any()
+    return data[data.columns.drop('target')], data['target']
 
 
 # apply same pre-processing and feature engineering techniques as applied during the training process
