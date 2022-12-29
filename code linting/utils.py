@@ -77,7 +77,7 @@ def apply_pre_processing(data):
     '''
     Apply all pre-processing methods together
     Input: The method takes the inference data as pandas dataframe as input
-    Output: Returns a dataframe after applying all preprocessing steps
+    Output: Returns a dataframe after applying all preprocessing steps as mentioned
     Example usage:
     processed_data = apply_pre_processing(df)
     '''
